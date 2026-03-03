@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ profile.name }} | Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <div class="container nav-content">
+            <span class="logo">YF.</span>
+            <div class="nav-links">
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#coaching">Coaching</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero container">
+        <div class="hero-grid">
+                <div class="hero-avatar">
+                <img src="{{ url_for('static', filename='images/avatar-1.jpg') }}" alt="avatar" />
+            </div>
+
+            <div class="hero-content">
+                <h2 class="section-label">PORTFOLIO</h2>
+                <h1>{{ profile.name }}</h1>
+                <p class="subtitle">{{ profile.role }}</p>
+                <p class="bio">{{ profile.bio }}</p>
+                <div class="cta-group">
+                    <a href="#" id="contact-trigger" class="btn primary">Work With Me</a>
+                    <a href="#experience" class="btn secondary">View Work</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= SERVICES ================= -->
+<section id="services" class="container premium-carousel">
+    <div class="section-header">
+        <span class="section-label">CORE EXPERTISE</span>
+        <h2>How I Drive Product Impact</h2>
+
+        <div class="carousel-nav">
+            <button class="nav-btn prev" data-carousel="services">&#10094;</button>
+            <button class="nav-btn next" data-carousel="services">&#10095;</button>
+        </div> <!-- nav -->
+    </div>
+
+    <div class="carousel-viewport" data-carousel="services">
+        <div class="carousel-track">
+            <div class="carousel-card">
+                <div class="card-icon">👥</div>
+                <h3>Agile Team Leadership</h3>
+                <p>Lead cross-functional teams with agile methodologies, driving velocity and continuous improvement.</p>
+            </div>
+
+            <div class="carousel-card">
+                <div class="card-icon">📊</div>
+                <h3>Data-Driven Decisions</h3>
+                <p>Leverage analytics and KPIs to measure impact, identify bottlenecks, and optimize product outcomes.</p>
+            </div>
+
+            <div class="carousel-card">
+                <div class="card-icon">🧠</div>
+                <h3>AI Capability Integration</h3>
+                <p>Identify and integrate AI-powered features that create competitive advantage and operational efficiency.</p>
+            </div>
+
+            <div class="carousel-card">
+                <div class="card-icon">⚙️</div>
+                <h3>Stakeholder Alignment</h3>
+                <p>Ensure executive clarity and cross-team alignment through structured roadmap communication.</p>
+            </div>
+        </div>
+
+        <div class="carousel-dots"></div>
+    </div>
+</section>
+
+
+<!-- ================= TESTIMONIALS ================= -->
+<section id="testimonials" class="container premium-carousel">
+    <div class="section-header">
+        <span class="section-label">TESTIMONIALS</span>
+        <h2>What Teams Say</h2>
+
+        <div class="carousel-nav">
+            <button class="nav-btn prev" data-carousel="testimonials">&#10094;</button>
+            <button class="nav-btn next" data-carousel="testimonials">&#10095;</button>
+        </div> <!-- nav -->
+    </div>
+
+    <div class="carousel-viewport testimonial-style" data-carousel="testimonials">
+        <div class="carousel-track">
+            <div class="carousel-card testimonial">
+                <p>"It is my pleasure to recommend Yebeltal as an outstanding Product Owner and Project Manager. I have come to know Yebeltal as a genuine leader who brings authenticity and clarity to his role. He is self-motivated, driven by a strong sense of purpose, and equipped with the expertise to effectively champion changes and drive impactful initiatives forward."</p>
+                <span>— Perminus Gathanga, CTO MkopoEasy</span>
+            </div>
+
+            <div class="carousel-card testimonial">
+                <p>"I highly recommend Yebeltal as a Product Owner. He excels in strategic thinking, analytical skills, and fostering collaboration across teams. Yebeltal consistently delivers successful product outcomes and is a valuable asset to any organization."</p>
+                <span>— Andinet Asamnew, Full Stack Software Engineer</span>
+            </div>
+
+            <div class="carousel-card testimonial">
+                <p>"Yebeltal was my direct reportee on several technical projects and during my work with him, he showed exceptional managing and team leading skills, being instrumental in our work environment. He was determined, responsible and highly involved specialist with rare communicative abilities and attention to details. A lot of important responsibilities were covered by him and delivered with quality and dedication. He was managing complex teams of professionals, leading all main company projects and gained the trust of all participants."</p>
+                <span>— Nikita Shapovalov, Engineering Manager</span>
+            </div>
+
+            <div class="carousel-card testimonial">
+                <p>"I had the pleasure of working with Yebeltal as a Product Owner on large-scale projects. Yebeltal consistently demonstrated leadership skills, effectively managing cross-functional teams to deliver successful projects. Yebeltal effectively communicates with stakeholders, keeping projects on track and delivers project to the client’s satisfaction. I highly recommend Yebeltal for any Product Owner/ Business Analyst roles."</p>
+                <span>— Igor Mashkov, Senior QA Engineer</span>
+            </div>
+        </div>
+
+        <div class="carousel-dots"></div>
+    </div>
+</section>
+
+    <section id="experience" class="container">
+        <div class="section-header">
+            <span class="section-label">EXPERIENCE</span>
+            <h2>Professional Journey</h2>
+        </div>
+        <div class="timeline">
+            {% for job in experience %}
+            <div class="timeline-item">
+                <div class="time-meta">
+                    <span class="period">{{ job.period }}</span>
+                    <span class="company">{{ job.company }}</span>
+                </div>
+                <div class="content">
+                    <h3>{{ job.role }}</h3>
+                    <ul>
+                        {% for point in job.highlights %}
+                        <li>{{ point }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+
+    <section id="skills" class="container">
+        <div class="grid-2">
+            <div>
+                <h2>Expertise</h2>
+                <div class="tag-cloud">
+                    {% for skill in skills %}
+                    <span class="tag">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            <div>
+                <h2>Toolstack</h2>
+                <div class="tag-cloud">
+                    {% for tool in tools %}
+                    <span class="tag tool">{{ tool }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="coaching" class="container">
+        <div class="coaching-header">
+            <h2>COACHING</h2>
+        </div>
+        <div class="coaching-grid">
+            <div class="coaching-text">
+                <blockquote class="coaching-quote">
+                    <p class="intro">"Clarity changes everything."</p>
+                    <p>I help you uncover what actually lights you up — not what looks good on paper, not what others expect — but what moves you. Together, we turn confusion into direction and direction into action.</p>
+                    <p class="cta-bold">Ready to find your passion and build a path around it?</p>
+                    <p>Start by filling out the form and let’s begin your breakthrough. 🔥</p>
+                </blockquote>
+                <div class="cta-group">
+                    <a href="https://forms.fillout.com/t/pWvaH5L328us" class="btn primary" target="_blank" rel="noopener">Let’s Begin</a>
+                </div>
+            </div>
+
+                <div class="coaching-visual">
+                <div class="visual-card">
+                    <img src="{{ url_for('static', filename='images/avatar-2.jpg') }}" alt="coach" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <h2>Let's Connect</h2>
+            <p>Ready to build the next big thing? Reach out.</p>
+            <div class="footer-contact-grid">
+                <div class="footer-card email">📧 <span id="footer-email">fissehayebeltal@gmail.com</span> <button id="copy-email" title="Copy email">📋</button></div>
+                <div class="footer-card phone">📞 <a href="tel:+251952660216">+251 9 52 66 02 16</a></div>
+                <div class="footer-card linkedin"><a href="https://www.linkedin.com/in/yebeltalfisseha/" target="_blank" rel="noopener">LinkedIn</a></div>
+                <div class="footer-card github"><a href="https://github.com/YebeltalF" target="_blank" rel="noopener">GitHub</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    class PremiumCarousel {
+        constructor(viewport) {
+            this.viewport = viewport;
+            this.track = viewport.querySelector(".carousel-track");
+            this.dotsContainer = viewport.querySelector(".carousel-dots");
+            this.cards = Array.from(this.track.children);
+            this.id = this.viewport.dataset.carousel;
+            this.prevBtn = document.querySelector(`.nav-btn.prev[data-carousel="${this.id}"]`);
+            this.nextBtn = document.querySelector(`.nav-btn.next[data-carousel="${this.id}"]`);
+            this.current = 0; // will be set after cloning
+            this.autoPlayInterval = null;
+
+            this.init();
+        }
+
+        init() {
+            // if there are no cards just exit
+            if (this.cards.length === 0) return;
+
+            // clone first and last slides for seamless effect
+            const firstClone = this.cards[0].cloneNode(true);
+            const lastClone = this.cards[this.cards.length - 1].cloneNode(true);
+            this.track.appendChild(firstClone);
+            this.track.insertBefore(lastClone, this.track.firstChild);
+
+            // rebuild cards array and set starting index
+            this.cards = Array.from(this.track.children);
+            this.current = 1;
+
+            this.createDots();
+            this.update(false);
+
+            this.prevBtn.addEventListener("click", () => this.prev());
+            this.nextBtn.addEventListener("click", () => this.next());
+
+            this.viewport.addEventListener("mouseenter", () => clearInterval(this.autoPlayInterval));
+            this.viewport.addEventListener("mouseleave", () => this.autoPlay());
+
+            this.autoPlay();
+            this.addSwipe();
+        }
+
+        createDots() {
+            this.cards.slice(1, -1).forEach((_, i) => {
+                const dot = document.createElement("span");
+                dot.addEventListener("click", () => {
+                    this.current = i + 1;
+                    this.update();
+                });
+                this.dotsContainer.appendChild(dot);
+            });
+        }
+
+        update(animate = true) {
+            const cardWidth = this.cards[0].offsetWidth + 32;
+            if (!animate) {
+                this.track.style.transition = 'none';
+            } else {
+                this.track.style.transition = 'transform 0.6s cubic-bezier(.22,.61,.36,1)';
+            }
+            this.track.style.transform = `translateX(-${this.current * cardWidth}px)`;
+
+            this.cards.forEach((card, idx) => {
+                card.classList.toggle("active", idx === this.current);
+            });
+
+            Array.from(this.dotsContainer.children).forEach((dot, idx) => {
+                dot.classList.toggle("active", idx === this.current - 1);
+            });
+        }
+
+        next() {
+            if (this.current >= this.cards.length - 1) return; // safety
+            this.current += 1;
+            this.update();
+            this.track.addEventListener('transitionend', () => {
+                if (this.current === this.cards.length - 1) {
+                    // moved onto cloned first
+                    this.current = 1;
+                    this.update(false);
+                }
+            }, { once: true });
+        }
+
+        prev() {
+            if (this.current <= 0) return;
+            this.current -= 1;
+            this.update();
+            this.track.addEventListener('transitionend', () => {
+                if (this.current === 0) {
+                    // moved onto cloned last
+                    this.current = this.cards.length - 2;
+                    this.update(false);
+                }
+            }, { once: true });
+        }
+
+        autoPlay() {
+            clearInterval(this.autoPlayInterval);
+            this.autoPlayInterval = setInterval(() => this.next(), 5000);
+        }
+
+        addSwipe() {
+            let startX = 0;
+            this.viewport.addEventListener("touchstart", e => {
+                startX = e.touches[0].clientX;
+            });
+            this.viewport.addEventListener("touchend", e => {
+                const diff = startX - e.changedTouches[0].clientX;
+                if (diff > 50) this.next();
+                if (diff < -50) this.prev();
+            });
+        }
+    }
+
+    document.querySelectorAll(".carousel-viewport").forEach(viewport => {
+        new PremiumCarousel(viewport);
+    });
+    </script>
+
+    <script>
+    // Smooth scroll + section highlight on top nav clicks
+    (function(){
+        const links = document.querySelectorAll('.nav-links a');
+        links.forEach(link => {
+            link.addEventListener('click', function(e){
+                const href = this.getAttribute('href');
+                if(!href || !href.startsWith('#')) return;
+                const target = document.querySelector(href);
+                if(!target) return;
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // add highlight class briefly
+                target.classList.add('section-highlight');
+                setTimeout(() => target.classList.remove('section-highlight'), 1400);
+                // update URL hash without jump
+                history.pushState(null, '', href);
+            });
+        });
+
+        // if page loaded with hash, highlight once
+        if(window.location.hash){
+            const t = document.querySelector(window.location.hash);
+            if(t){
+                setTimeout(()=>{ t.classList.add('section-highlight'); setTimeout(()=> t.classList.remove('section-highlight'),1400); }, 600);
+            }
+        }
+    })();
+    </script>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="contact-modal" aria-hidden="true">
+      <div class="modal-overlay" data-close></div>
+      <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+        <button class="modal-close" aria-label="Close" data-close>&times;</button>
+        <h3 id="contact-modal-title">Get in touch</h3>
+        <p class="modal-sub">Choose a method to reach out</p>
+        <div class="contact-grid">
+          <div class="contact-card email">
+            <span class="icon">✉️</span>
+            <a class="label" href="mailto:fissehayebeltal@gmail.com">fissehayebeltal@gmail.com</a>
+            <button class="copy-email-modal" title="Copy email" aria-label="Copy email address">📋</button>
+          </div>
+          <a class="contact-card phone" href="tel:+251952660216"><span class="icon">📞</span><span class="label">+251 9 52 66 02 16</span></a>
+          <a class="contact-card linkedin" href="https://www.linkedin.com/in/yebeltalfisseha/" target="_blank" rel="noopener"><span class="icon">🔗</span><span class="label">LinkedIn</span></a>
+          <a class="contact-card github" href="https://github.com/YebeltalF" target="_blank" rel="noopener"><span class="icon">🐱</span><span class="label">GitHub</span></a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+    (function(){
+      const trigger = document.getElementById('contact-trigger');
+      const modal = document.getElementById('contact-modal');
+      const closeables = modal ? modal.querySelectorAll('[data-close]') : [];
+      function openModal(){ if(!modal) return; modal.setAttribute('aria-hidden','false'); modal.classList.add('open'); document.body.style.overflow='hidden'; }
+      function closeModal(){ if(!modal) return; modal.setAttribute('aria-hidden','true'); modal.classList.remove('open'); document.body.style.overflow=''; }
+      if(trigger){ trigger.addEventListener('click', function(e){ e.preventDefault(); openModal(); }); }
+      closeables.forEach(el=> el.addEventListener('click', closeModal));
+      document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
+      modal && modal.addEventListener('click', function(){ closeModal(); });
+      const panel = modal && modal.querySelector('.modal-panel');
+      panel && panel.addEventListener('click', function(e){ e.stopPropagation(); });
+
+      // modal email copy button
+      const modalCopy = document.querySelector('.copy-email-modal');
+      if(modalCopy){
+          modalCopy.addEventListener('click', function(){
+              const email = 'fissehayebeltal@gmail.com';
+              navigator.clipboard.writeText(email);
+              modalCopy.textContent='✅';
+              setTimeout(()=> modalCopy.textContent='📋',1200);
+          });
+      }
+    })();
+    </script>
+
+    <script>
+    // footer copy email
+    (function(){
+        const copyBtn=document.getElementById('copy-email');
+        const emailSpan=document.getElementById('footer-email');
+        if(copyBtn && emailSpan){
+            copyBtn.addEventListener('click',()=>{
+                navigator.clipboard.writeText(emailSpan.textContent.trim());
+                copyBtn.textContent='✅';
+                setTimeout(()=>copyBtn.textContent='📋',1200);
+            });
+        }
+    })();
+    </script>
+</body>
+</html>
